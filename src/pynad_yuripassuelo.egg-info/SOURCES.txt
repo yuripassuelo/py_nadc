@@ -1,0 +1,10 @@
+LICENSE
+pyproject.toml
+setup.cfg
+src/pynad/__init__.py
+src/pynad/pynad.py
+src/pynad_yuripassuelo.egg-info/PKG-INFO
+src/pynad_yuripassuelo.egg-info/SOURCES.txt
+src/pynad_yuripassuelo.egg-info/dependency_links.txt
+src/pynad_yuripassuelo.egg-info/top_level.txt
+test/Testes.py

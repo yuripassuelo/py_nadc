@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: pynad-yuripassuelo
+Version: 0.0.0
+Summary: Pacote para acesso aos microdados Trimestrais da PNAD
+Home-page: https://github.com/yuripassuelo/pynad
+Author: Yuri Passuelo
+Author-email: yuri.mpassuelo@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/pypa/sampleproject/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: read_me/markdown
+License-File: LICENSE
+
+UNKNOWN
+
