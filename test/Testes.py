@@ -1,11 +1,40 @@
-
 import sys
+import pytest
+import py_nadc
+#pnad_20_01 = pynad.micro_data('2020','1')
 
-sys.path.append(r'C:\Users\T-Gamer\Desktop\pynad\src\pynad')
+"""
+Sessão de testes do pacote dividida em X partes:
 
-import pynad
+1. Conferência de Erros;
+2. Conferência de Agregados;
 
-pnad_20_01 = pynad.micro_data('2020','1')
+
+"""
+
+def error_tests():
+    # Parametro inferior ao ano de 2012
+    with pytest.raises(ValueError, match=r"Parametro 'ano' Inferior a 2012"):
+        py_nadc.get_pnadc( 2011, 1 )
+    # Parametro `ano` do tipo string
+    with pytest.raises(ValueError, match=r"Parametro 'ano' nao e do tipo integer"):
+        py_nadc.get_pnadc( "2020", 1)
+    # Parametro `tri` do tipo string
+    with pytest.raises(ValueError, match=r"Parametro 'tri' nao e do tipo integer"):
+        py_nadc.get_pnadc( 2020, "1")
+    # Parametro `tri` fora do intervalo de 1 até 4
+    with pytest.raises(ValueError, match=r"Parametro 'tri' fora do intervalo"):
+        py_nadc.get_pnadc( 2020, 5)
+    with pytest.raises(ValueError, match=r"Parametro 'tri' fora do intervalo"):
+        py_nadc.get_pnadc( 2020, 6)
+    with pytest.raises(ValueError, match=r"Parametro 'tri' fora do intervalo"):
+        py_nadc.get_pnadc( 2020, 16)
+    with pytest.raises(ValueError, match=r"Parametro 'tri' fora do intervalo"):
+        py_nadc.get_pnadc( 2020, 9999999)
+
+
+error_tests()
+
 
 """
 Calculando Rendas Habituais e Efetivas Reais
@@ -19,6 +48,24 @@ Calculando Rendas Habituais e Efetivas Reais
 
 
 """
+
+import tempfile
+
+d = tempfile.mkdtemp()
+
+import os
+
+os.path.exists( "C:\\Users\\T-Gamer\\Desktop\\Pasta Dicas/")
+
+
+dir = "C:/Users/T-Gamer/Desktop/Pasta Dicas/"
+dir2 = "C:\\Users\\T-Gamer\\Desktop\\Pasta Dicas\\"
+
+
+str_ = [ l for l in dir2 ]
+
+#pnad_20_01 = get_pnadc( 2020, 1 )
+pnad_20_01 = py_nadc.get_pnadc( 2020, 1 )
 
 result = pnad_20_01[['UF','V1028','VD4019','VD4020','Habitual','Efetivo']].\
     assign( Renda_Habitual_Nom  = lambda x: x['VD4019']*x['V1028']/1000000,
@@ -140,7 +187,4 @@ df = pd.concat([pnad_20_01[['UF','VD4001','V1028']].groupby(['UF','VD4001'],as_i
 df.reset_index(inplace=True)
     
 sns.barplot( x = 'UF', y = 'Desemprego', data = df, color= "blue" )
-
-
-
 

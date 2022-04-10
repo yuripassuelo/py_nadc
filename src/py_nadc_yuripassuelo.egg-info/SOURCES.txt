@@ -1,0 +1,10 @@
+LICENSE
+pyproject.toml
+setup.cfg
+src/py_nadc/__init__.py
+src/py_nadc/py_nadc.py
+src/py_nadc_yuripassuelo.egg-info/PKG-INFO
+src/py_nadc_yuripassuelo.egg-info/SOURCES.txt
+src/py_nadc_yuripassuelo.egg-info/dependency_links.txt
+src/py_nadc_yuripassuelo.egg-info/top_level.txt
+test/Testes.py
